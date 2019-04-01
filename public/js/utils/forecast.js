@@ -1,7 +1,7 @@
 const request = require('request');
 
 const forecast = (geoCodeResponse, callback) => {
-	const token = '53511e9a3600bf44737a6b00060cd77b';
+	const token = 'Your DarkSky token here';
 	const url =
 		'https://api.darksky.net/forecast/' +
 		token +
