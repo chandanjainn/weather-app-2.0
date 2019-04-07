@@ -1,7 +1,7 @@
 const request = require('request');
 
 function getGeoURL(input) {
-	const token = 'Your MapBox token here';
+	const token = 'pk..1O8lMeYD_6UjN5O9kVdzTw';
 	const geoCodeURL =
 		'https://api.mapbox.com/geocoding/v5/mapbox.places/' +
 		encodeURIComponent(input) +

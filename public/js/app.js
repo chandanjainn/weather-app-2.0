@@ -8,31 +8,36 @@ const p2 = document.querySelector('#p2');
 
 weatherForm.addEventListener('submit', event => {
 	event.preventDefault();
-	p1.textContent = 'Loading...';
-	p2.textContent = '';
+	p1.innerHTML = 'Loading...';
+	p2.innerHTML = '';
 
-	fetch('http://localhost:3000/weather?address=' + userInput.value).then(
+	fetch('/weather?address=' + userInput.value).then(
 		response => {
 			response.json().then(data => {
 				if (data.error) {
-					p1.textContent = data.error;
+					p1.innerHTML = data.error;
 				} else {
-					p1.textContent =
+					p1.innerHTML =
 						'Longitude=' +
 						data.longitude +
-						'Latitude= ' +
+						'</br>Latitude= ' +
 						data.latitude +
-						'\r\nLocation= ' +
+						'</br>Location= ' +
 						data.location;
-					p2.textContent =
+					p2.innerHTML =
 						'Weather Forecast:- It will be ' +
 						data.forecast +
-						'\r\nIt is ' +
+						'</br>It is ' +
 						data.temperature +
 						' C ' +
 						'out there.';
 				}
 			});
+		},
+		onRejection => {
+			if (onRejection) {
+				p1.innerHTML = 'Please check your internet connection!';
+			}
 		}
 	);
 });

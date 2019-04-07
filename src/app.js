@@ -10,6 +10,7 @@ const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
+const PORT = process.env.PORT || 3000;
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs');
@@ -43,7 +44,7 @@ app.get('/help', (req, res) => {
 
 app.get('/weather', (req, res) => {
 	if (!req.query.address) {
-		return res.send({ error: 'You must provide an address' });
+		return res.send({ error: 'You must provide a location' });
 	}
 
 	geoCode(req.query.address, (geoCodeError, geoCodeResponse) => {
@@ -82,6 +83,6 @@ app.get('*', (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log('Server is up on port 3000.');
+app.listen(PORT, () => {
+	console.log('Server is up on port' + PORT	);
 });
