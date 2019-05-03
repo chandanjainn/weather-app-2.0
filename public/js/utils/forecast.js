@@ -1,7 +1,7 @@
 const request = require('request');
 
 const forecast = (geoCodeResponse, callback) => {
-	const token = '';
+	const token = process.env.DARKSKY_APIKEY;
 	const url =
 		'https://api.darksky.net/forecast/' +
 		token +

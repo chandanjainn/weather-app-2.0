@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const hbs = require('hbs');
@@ -10,7 +11,7 @@ const app = express();
 const publicDirectoryPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname, '../templates/partials');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs');
@@ -84,5 +85,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log('Server is up on port' + PORT	);
+	console.log('Server is up on port' + PORT);
 });
